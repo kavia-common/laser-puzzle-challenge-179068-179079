@@ -7,9 +7,15 @@ const options = {
       title: 'My Express API',
       version: '1.0.0',
       description: 'A simple Express API documented with Swagger',
-    }
+    },
+    // servers will be injected dynamically in app.js to reflect current host/port
+    tags: [
+      { name: 'System', description: 'Service health and metadata' },
+      { name: 'Levels', description: 'Level catalog and content' },
+    ],
   },
-  apis: ['./src/routes/*.js'], // Path to the API docs
+  // Include route files for Swagger JSDoc scanning
+  apis: ['./src/routes/*.js'],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
